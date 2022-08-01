@@ -1,2 +1,3 @@
 # udacity_repo
 This is a repository for the Udacity MLOps course
+- Here we will start doing...
