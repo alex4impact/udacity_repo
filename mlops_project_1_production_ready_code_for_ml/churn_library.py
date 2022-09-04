@@ -2,20 +2,13 @@
 this library contains all the functions used for processing, feature engineering, training and evaluation of the predict customer churn model
 
 author: Alex Carvalho
-date: August 2022
+date: September 2022
 """
 
 # import libraries
 import os
-import logging
 
 os.environ['QT_QPA_PLATFORM']='offscreen'
-
-logging.basicConfig(
-    filename='./logs/churn_library.log',
-    level=logging.INFO,
-    filemode='w',
-    format='%(name)s - %(levelname)s - %(message)s - %(asctime)s')
 
 
 def import_data(pth):
@@ -30,14 +23,7 @@ def import_data(pth):
     
     import pandas as pd
     
-    try:
-        logging.info('path to extract data: %s', pth)
-        assert isinstance(pth, str)
-        logging.info('SUCCESS: path to extract data is of type str')
-        return pd.read_csv(pth, index_col=0)
-    except AssertionError:
-        logging.error("path argument must be a string")
-        return None
+    return pd.read_csv(pth, index_col=0)
 
 
 def perform_eda(df):
@@ -59,7 +45,7 @@ def perform_eda(df):
     
     for plot in plots:
         plt.figure(figsize=(20,10))
-        plot_filename_path = f'./images/eda/{str.lower(plot)}_distribution.png'
+        plot_filename_path = f'./mlops_project_1_production_ready_code_for_ml/images/eda/{str.lower(plot)}_distribution.png'
         
         if plot == 'Marital_Status':
             df[plot].value_counts('normalize').plot(kind='bar')
@@ -71,7 +57,7 @@ def perform_eda(df):
             plt.close()
         elif plot == 'heatmap':
             sns.heatmap(df.corr(), annot=False, cmap='Dark2_r', linewidths = 2)
-            plt.savefig(f'./images/eda/{plot}.png')
+            plt.savefig(f'./mlops_project_1_production_ready_code_for_ml/images/eda/{plot}.png')
             plt.close()
         else:
             df[plot].hist()
@@ -172,19 +158,19 @@ def classification_report_image(y_train,
     import matplotlib.pyplot as plt
     from sklearn.metrics import classification_report
     
-    filename_rfc = './images/results/rf_results.png'
-    filename_lrc = './images/results/logistic_results.png'
+    filename_rfc = './mlops_project_1_production_ready_code_for_ml/images/results/rf_results.png'
+    filename_lrc = './mlops_project_1_production_ready_code_for_ml/images/results/logistic_results.png'
     
     for model in [('Logistic Regression ', y_test_preds_lr, y_train_preds_lr, filename_lrc),
                   ('Random Forest ', y_test_preds_rf, y_train_preds_rf, filename_rfc)]:
-        plt.rc('figure', figsize=(5, 5))
+        plt.rc('figure', figsize=(8, 8))
         #plt.text(0.01, 0.05, str(model.summary()), {'fontsize': 12}) old approach
         plt.text(0.01, 1.25, str(f'{model[0]}Train'), {'fontsize': 10}, fontproperties = 'monospace')
         plt.text(0.01, 0.05, str(classification_report(y_test, model[1])), {'fontsize': 10}, fontproperties = 'monospace') # approach improved by OP -> monospace!
         plt.text(0.01, 0.6, str(f'{model[0]}Test'), {'fontsize': 10}, fontproperties = 'monospace')
         plt.text(0.01, 0.7, str(classification_report(y_train, model[2])), {'fontsize': 10}, fontproperties = 'monospace') # approach improved by OP -> monospace!
         plt.axis('off');
-        plt.savefig(model[3])
+        plt.savefig(model[3], bbox_inches = "tight")
         plt.close()
     
     return None
@@ -251,10 +237,10 @@ def train_models(X_train, X_test, y_train, y_test):
     from sklearn.linear_model import LogisticRegression
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.model_selection import GridSearchCV
-    from sklearn.externals import joblib
     from sklearn.metrics import plot_roc_curve
     import matplotlib.pyplot as plt
     import shap
+    import joblib
     
 #     X_train, X_test, y_train, y_test = perform_feature_engineering(df, response)
     
@@ -280,12 +266,12 @@ def train_models(X_train, X_test, y_train, y_test):
     lrc.fit(X_train, y_train)
     
     ## Store cv_rfc model
-    cv_rfc_filename = './models/rfc_model.pkl'
+    cv_rfc_filename = './mlops_project_1_production_ready_code_for_ml/models/rfc_model.pkl'
     with open(cv_rfc_filename, 'wb') as file_cv_rfc:  
         joblib.dump(cv_rfc.best_estimator_, file_cv_rfc)
         
     ## Store lrc model
-    lrc_filename = './models/logistic_model.pkl'
+    lrc_filename = './mlops_project_1_production_ready_code_for_ml/models/logistic_model.pkl'
     with open(lrc_filename, 'wb') as file_lrc:  
         joblib.dump(lrc, file_lrc)
     
@@ -306,13 +292,13 @@ def train_models(X_train, X_test, y_train, y_test):
                                 y_test_preds_rf)
     
     ## Generate feature importance image
-    output_pth = './images/results/feature_importances.png'
+    output_pth = './mlops_project_1_production_ready_code_for_ml/images/results/feature_importances.png'
     feature_importance_plot(cv_rfc.best_estimator_, X_train, output_pth)
     
     ## Generate ROC curves images
     # load saved models
-    rfc_model = joblib.load('./models/rfc_model.pkl')
-    lr_model = joblib.load('./models/logistic_model.pkl')
+    rfc_model = joblib.load('./mlops_project_1_production_ready_code_for_ml/models/rfc_model.pkl')
+    lr_model = joblib.load('./mlops_project_1_production_ready_code_for_ml/models/logistic_model.pkl')
     
     # Generate ROC plot
     lrc_plot = plot_roc_curve(lrc, X_test, y_test)
@@ -322,7 +308,7 @@ def train_models(X_train, X_test, y_train, y_test):
     rfc_disp = plot_roc_curve(rfc_model, X_test, y_test, ax=ax, alpha=0.8)
     lrc_plot.plot(ax=ax, alpha=0.8)
     # Save plot
-    plt.savefig('./images/results/roc_curve_result.png')
+    plt.savefig('./mlops_project_1_production_ready_code_for_ml/images/results/roc_curve_result.png')
     plt.close()
     
     ## Generate SHAP plot
@@ -330,14 +316,14 @@ def train_models(X_train, X_test, y_train, y_test):
     shap_values = explainer.shap_values(X_test)
     shap.summary_plot(shap_values, X_test, plot_type="bar", show=False)
     plt.gcf()
-    plt.savefig('./images/results/shap_explainer_result.png', bbox_inches = "tight")
+    plt.savefig('./mlops_project_1_production_ready_code_for_ml/images/results/shap_explainer_result.png', bbox_inches = "tight")
     plt.close()
 
     return None
 
 if __name__ == "__main__":
     # import data
-    pth = "./data/bank_data.csv"
+    pth = "./mlops_project_1_production_ready_code_for_ml/data/bank_data.csv"
     df = import_data(pth)
     
     # perform eda
