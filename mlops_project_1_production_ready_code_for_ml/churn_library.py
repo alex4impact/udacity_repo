@@ -12,10 +12,10 @@ import logging
 os.environ['QT_QPA_PLATFORM']='offscreen'
 
 logging.basicConfig(
-    filename='./test_results.log',
+    filename='./logs/churn_library.log',
     level=logging.INFO,
     filemode='w',
-    format='%(name)s - %(levelname)s - %(message)s')
+    format='%(name)s - %(levelname)s - %(message)s - %(asctime)s')
 
 
 def import_data(pth):
@@ -31,8 +31,13 @@ def import_data(pth):
     import pandas as pd
     
     try:
-        
+        logging.info('path to extract data: %s', pth)
+        assert isinstance(pth, str)
+        logging.info('SUCCESS: path to extract data is of type str')
         return pd.read_csv(pth, index_col=0)
+    except AssertionError:
+        logging.error("path argument must be a string")
+        return None
 
 
 def perform_eda(df):
