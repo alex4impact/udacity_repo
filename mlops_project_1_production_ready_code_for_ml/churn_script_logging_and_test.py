@@ -1,11 +1,11 @@
 import os
 import logging
-import pytest
+import pandas as pd
+# import pytest
 # from churn_library import import_data, perform_eda
 import churn_library as cl
 
-# @pytest.fixture
-# def logger():
+
 logging.basicConfig(
 	filename='../mlops_project_1_production_ready_code_for_ml/logs/churn_library.log',
 	level=logging.INFO,
@@ -19,7 +19,7 @@ def test_import(path, request):
 	'''
 	try:
 		df = cl.import_data(path)
-		request.config.cache.set('cache_df', df.to_json())
+		request.config.cache.set('data/df', df.to_dict())
 		logging.info("Testing import_data: SUCCESS")
 	except FileNotFoundError as err:
 		logging.error("Testing import_eda: The file wasn't found")
@@ -33,12 +33,20 @@ def test_import(path, request):
 		raise err
 
 
-# def test_eda(path):
-# 	'''
-# 	test perform eda function
-# 	'''
-# 	try:
-# 		 perform_eda(import_data(path))
+def test_eda(request):
+	'''
+	test perform eda function
+	'''
+	try:
+		df = pd.DataFrame(request.config.cache.get('data/df', None))
+		assert df.shape[0] > 0
+		assert df.shape[1] > 0
+		logging.info("Cached df loaded: SUCCESS")
+		# cl.perform_eda(df)
+
+	except AssertionError as err:
+		logging.error("Testing import_data: The file doesn't appear to have rows and columns")
+		raise err
 
 
 # def test_encoder_helper(encoder_helper):
