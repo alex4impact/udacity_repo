@@ -7,7 +7,7 @@ date: September 2022
 
 # import libraries
 import os
-from constants import DF_PATH, PLOTS, PLOTS_PATH
+from constants import DF_PATH, PLOTS, PLOTS_PATH, CATEGORY_LIST, RESPONSE, KEEP_COLS, RESPONSE_COLS
 
 os.environ['QT_QPA_PLATFORM']='offscreen'
 
@@ -23,8 +23,12 @@ def import_data(pth):
     '''	
     
     import pandas as pd
+
+    df = pd.read_csv(pth, index_col=0)
+
+    df[RESPONSE] = df['Attrition_Flag'].apply(lambda val: 0 if val == "Existing Customer" else 1)
     
-    return pd.read_csv(pth, index_col=0)
+    return df
 
 
 def perform_eda(df):
@@ -40,7 +44,6 @@ def perform_eda(df):
     import matplotlib.pyplot as plt
     import seaborn as sns; sns.set()
     
-    df['Churn'] = df['Attrition_Flag'].apply(lambda val: 0 if val == "Existing Customer" else 1)
     
     for plot in PLOTS:
         plt.figure(figsize=(20,10))
@@ -65,14 +68,14 @@ def perform_eda(df):
     return None
 
 
-def encoder_helper(df, category_lst, response):
+def encoder_helper(df, CATEGORY_LIST, RESPONSE):
     '''
     helper function to turn each categorical column into a new column with
     propotion of churn for each category - associated with cell 15 from the notebook
 
     Args:
             df: pandas dataframe
-            category_lst: list of columns that contain categorical features
+            CATEGORY_LIST: list of columns that contain categorical features
             response: string of response name [optional argument that could be used for naming variables or index y column]
 
     Returns:
@@ -81,57 +84,42 @@ def encoder_helper(df, category_lst, response):
     
     import numpy as np
     
-    for cat in category_lst:
-        new_cat_name = f'{cat}_{response}'
-        df[new_cat_name] = df.groupby(cat).Churn.transform(np.mean)
+    for cat in CATEGORY_LIST:
+        new_cat_name = f'{cat}_{RESPONSE}'
+        df[new_cat_name] = df.groupby(cat)[RESPONSE].transform(np.mean)
         
     return df
 
 
-def perform_feature_engineering(df, response):
+def perform_feature_engineering(df, RESPONSE):
     '''
     Args:
-              df: pandas dataframe
-              response: string of response name [optional argument that could be used for naming variables or index y column]
+        df: pandas dataframe
+        response: string of response name [optional argument that could be used for naming variables or index y column]
 
     Returns:
-              X_train: X training data
-              X_test: X testing data
-              y_train: y training data
-              y_test: y testing data
+        X_train: X training data
+        X_test: X testing data
+        y_train: y training data
+        y_test: y testing data
     '''
     
     from sklearn.model_selection import train_test_split
     import pandas as pd
     
-    category_lst = [
-    'Gender',
-    'Education_Level',
-    'Marital_Status',
-    'Income_Category',
-    'Card_Category'                
-    ]
-    
-    df = encoder_helper(df, category_lst, response)
+    df = encoder_helper(df, CATEGORY_LIST, RESPONSE)
     
     y = df['Churn']
     X = pd.DataFrame()
     
-    keep_cols = ['Customer_Age', 'Dependent_count', 'Months_on_book',
-             'Total_Relationship_Count', 'Months_Inactive_12_mon',
-             'Contacts_Count_12_mon', 'Credit_Limit', 'Total_Revolving_Bal',
-             'Avg_Open_To_Buy', 'Total_Amt_Chng_Q4_Q1', 'Total_Trans_Amt',
-             'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1', 'Avg_Utilization_Ratio',
-             f'Gender_{response}', f'Education_Level_{response}',
-             f'Marital_Status_{response}', f'Income_Category_{response}',
-             f'Card_Category_{response}']
+    keep_cols = KEEP_COLS.append([col+RESPONSE for col in RESPONSE_COLS])
     
     X[keep_cols] = df[keep_cols]
     
     # return train test split 
     return train_test_split(X, y, test_size= 0.3, random_state=42)
     
-   
+
 def classification_report_image(y_train,
                                 y_test,
                                 y_train_preds_lr,
@@ -328,8 +316,8 @@ if __name__ == "__main__":
     perform_eda(df)
     
     # perform feature engineering
-    response = 'Churn'
-    X_train, X_test, y_train, y_test = perform_feature_engineering(df, response)
+    # response = 'Churn'
+    X_train, X_test, y_train, y_test = perform_feature_engineering(df, RESPONSE)
     
     # train model
     train_models(X_train, X_test, y_train, y_test)

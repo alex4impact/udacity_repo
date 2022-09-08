@@ -5,12 +5,12 @@ import pandas as pd
 # import pytest
 # from churn_library import import_data, perform_eda
 import churn_library as cl
-from constants import PLOTS, PLOTS_PATH
+from constants import PLOTS, PLOTS_PATH, CATEGORY_LIST, RESPONSE
 
-# Parent Folder 
-sys.path.append(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-)
+# # Parent Folder 
+# sys.path.append(
+#     os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+# )
 
 
 logging.basicConfig(
@@ -70,12 +70,35 @@ def test_eda(request):
 		raise err
 
 
-# def test_encoder_helper(encoder_helper):
-# 	'''
-# 	test encoder helper
-# 	'''
+def test_encoder_helper(request):
+	'''
+	test encoder helper
+	'''
+	try:
+		df = pd.DataFrame(request.config.cache.get('data/df', None))
+		assert df.shape[0] > 0
+		assert df.shape[1] > 0
+		logging.info("Cached df loaded: SUCCESS")
+	except AssertionError as err:
+		logging.error("Testing cached df loaded on test_encoder_helper function:\
+			The file doesn't appear to have rows and columns")
+		raise err
+	try:
+		alt_df = df.copy()
+		new_df = cl.encoder_helper(alt_df, CATEGORY_LIST, RESPONSE)
+		assert len(new_df.columns) == len(df.columns) + len(CATEGORY_LIST)
+		assert new_df.shape[0] == df.shape[0]
+		logging.info("Categorical columns encoded by encoder_helper: SUCCESS")
+	except AssertionError as err:
+		logging.error("Testing encoding of categorical columns on test_encoder_helper function:\
+			Categorical columns haven't been encoded or new df has different number of records")
+		raise err
 
-# 	df = encoder_helper(df, category_lst, response)
+
+
+
+
+
 
 # def test_perform_feature_engineering(perform_feature_engineering):
 # 	'''
