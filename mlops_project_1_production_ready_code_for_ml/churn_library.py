@@ -7,6 +7,7 @@ date: September 2022
 
 # import libraries
 import os
+from constants import DF_PATH, PLOTS, PLOTS_PATH
 
 os.environ['QT_QPA_PLATFORM']='offscreen'
 
@@ -41,11 +42,9 @@ def perform_eda(df):
     
     df['Churn'] = df['Attrition_Flag'].apply(lambda val: 0 if val == "Existing Customer" else 1)
     
-    plots = ['Churn', 'Customer_Age', 'Marital_Status', 'Total_Trans_Ct','heatmap']
-    
-    for plot in plots:
+    for plot in PLOTS:
         plt.figure(figsize=(20,10))
-        plot_filename_path = f'./mlops_project_1_production_ready_code_for_ml/images/eda/{str.lower(plot)}_distribution.png'
+        plot_filename_path = f'{PLOTS_PATH + str.lower(plot)}_distribution.png'
         
         if plot == 'Marital_Status':
             df[plot].value_counts('normalize').plot(kind='bar')
@@ -57,7 +56,7 @@ def perform_eda(df):
             plt.close()
         elif plot == 'heatmap':
             sns.heatmap(df.corr(), annot=False, cmap='Dark2_r', linewidths = 2)
-            plt.savefig(f'./mlops_project_1_production_ready_code_for_ml/images/eda/{plot}.png')
+            plt.savefig(f'{PLOTS_PATH + str.lower(plot)}.png')
             plt.close()
         else:
             df[plot].hist()
@@ -323,8 +322,7 @@ def train_models(X_train, X_test, y_train, y_test):
 
 if __name__ == "__main__":
     # import data
-    pth = "./mlops_project_1_production_ready_code_for_ml/data/bank_data.csv"
-    df = import_data(pth)
+    df = import_data(DF_PATH)
     
     # perform eda
     perform_eda(df)

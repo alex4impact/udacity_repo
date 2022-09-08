@@ -1,9 +1,16 @@
 import os
+import sys
 import logging
 import pandas as pd
 # import pytest
 # from churn_library import import_data, perform_eda
 import churn_library as cl
+from constants import PLOTS, PLOTS_PATH
+
+# Parent Folder 
+sys.path.append(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+)
 
 
 logging.basicConfig(
@@ -42,10 +49,24 @@ def test_eda(request):
 		assert df.shape[0] > 0
 		assert df.shape[1] > 0
 		logging.info("Cached df loaded: SUCCESS")
-		# cl.perform_eda(df)
-
 	except AssertionError as err:
-		logging.error("Testing import_data: The file doesn't appear to have rows and columns")
+		logging.error("Testing cached df loaded on test_eda function:\
+			The file doesn't appear to have rows and columns")
+		raise err
+	try:
+		cl.perform_eda(df)
+		assert len([entry for entry in os.listdir(PLOTS_PATH) if os.path.isfile(os.path.join(PLOTS_PATH, entry))]) == len(PLOTS)
+		logging.info("Number of plot files is correct: SUCCESS")
+		for plot in PLOTS:
+			if str.lower(plot) != 'heatmap':
+				assert os.path.isfile(os.path.join(PLOTS_PATH, f'{str.lower(plot)}_distribution.png'))
+				logging.info(f"{str.lower(plot)}_distribution.png exists: SUCCESS")
+			else:
+				assert os.path.isfile(os.path.join(PLOTS_PATH, f'{str.lower(plot)}.png'))
+				logging.info(f"{str.lower(plot)}.png exists: SUCCESS")
+	except AssertionError as err:
+		logging.error("Testing plots saved on test_eda function:\
+			The number of plots is incorrect or one or more plots don't exist")
 		raise err
 
 
@@ -72,7 +93,6 @@ def test_eda(request):
 
 
 if __name__ == "__main__":
-	# path = "./data/bank_data.csv"
 	test_import(path, request)
 
 
