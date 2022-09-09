@@ -7,7 +7,7 @@ date: September 2022
 
 # import libraries
 import os
-from constants import DF_PATH, PLOTS, PLOTS_PATH, CATEGORY_LIST, RESPONSE, KEEP_COLS, RESPONSE_COLS
+from constants import DF_PATH, PLOTS, PLOTS_PATH, CATEGORY_LIST, RESPONSE, KEEP_COLS
 
 os.environ['QT_QPA_PLATFORM']='offscreen'
 
@@ -31,7 +31,7 @@ def import_data(pth):
     return df
 
 
-def perform_eda(df):
+def perform_eda(df, plots, plots_path):
     '''
     perform eda on df and save figures to images folder
     
@@ -45,9 +45,9 @@ def perform_eda(df):
     import seaborn as sns; sns.set()
     
     
-    for plot in PLOTS:
+    for plot in plots:
         plt.figure(figsize=(20,10))
-        plot_filename_path = f'{PLOTS_PATH + str.lower(plot)}_distribution.png'
+        plot_filename_path = f'{plots_path + str.lower(plot)}_distribution.png'
         
         if plot == 'Marital_Status':
             df[plot].value_counts('normalize').plot(kind='bar')
@@ -59,7 +59,7 @@ def perform_eda(df):
             plt.close()
         elif plot == 'heatmap':
             sns.heatmap(df.corr(), annot=False, cmap='Dark2_r', linewidths = 2)
-            plt.savefig(f'{PLOTS_PATH + str.lower(plot)}.png')
+            plt.savefig(f'{plots_path + str.lower(plot)}.png')
             plt.close()
         else:
             df[plot].hist()
@@ -68,7 +68,7 @@ def perform_eda(df):
     return None
 
 
-def encoder_helper(df, CATEGORY_LIST, RESPONSE):
+def encoder_helper(df, category_list, response):
     '''
     helper function to turn each categorical column into a new column with
     propotion of churn for each category - associated with cell 15 from the notebook
@@ -84,14 +84,14 @@ def encoder_helper(df, CATEGORY_LIST, RESPONSE):
     
     import numpy as np
     
-    for cat in CATEGORY_LIST:
-        new_cat_name = f'{cat}_{RESPONSE}'
-        df[new_cat_name] = df.groupby(cat)[RESPONSE].transform(np.mean)
+    for cat in category_list:
+        new_cat_name = f'{cat}_{response}'
+        df[new_cat_name] = df.groupby(cat)[response].transform(np.mean)
         
     return df
 
 
-def perform_feature_engineering(df, RESPONSE):
+def perform_feature_engineering(df, category_list, keep_cols, response):
     '''
     Args:
         df: pandas dataframe
@@ -107,12 +107,12 @@ def perform_feature_engineering(df, RESPONSE):
     from sklearn.model_selection import train_test_split
     import pandas as pd
     
-    df = encoder_helper(df, CATEGORY_LIST, RESPONSE)
+    df = encoder_helper(df, category_list, response)
     
-    y = df['Churn']
+    y = df[response]
     X = pd.DataFrame()
     
-    keep_cols = KEEP_COLS.append([col+RESPONSE for col in RESPONSE_COLS])
+    # keep_cols = keep_cols.append([col+response for col in response_cols])
     
     X[keep_cols] = df[keep_cols]
     
@@ -131,15 +131,15 @@ def classification_report_image(y_train,
     in images folder
     
     Args:
-            y_train: training response values
-            y_test:  test response values
-            y_train_preds_lr: training predictions from logistic regression
-            y_train_preds_rf: training predictions from random forest
-            y_test_preds_lr: test predictions from logistic regression
-            y_test_preds_rf: test predictions from random forest
+        y_train: training response values
+        y_test:  test response values
+        y_train_preds_lr: training predictions from logistic regression
+        y_train_preds_rf: training predictions from random forest
+        y_test_preds_lr: test predictions from logistic regression
+        y_test_preds_rf: test predictions from random forest
 
     Returns:
-             None
+        None
     '''
     
     import matplotlib.pyplot as plt
@@ -149,7 +149,7 @@ def classification_report_image(y_train,
     filename_lrc = './mlops_project_1_production_ready_code_for_ml/images/results/logistic_results.png'
     
     for model in [('Logistic Regression ', y_test_preds_lr, y_train_preds_lr, filename_lrc),
-                  ('Random Forest ', y_test_preds_rf, y_train_preds_rf, filename_rfc)]:
+                ('Random Forest ', y_test_preds_rf, y_train_preds_rf, filename_rfc)]:
         plt.rc('figure', figsize=(8, 8))
         #plt.text(0.01, 0.05, str(model.summary()), {'fontsize': 12}) old approach
         plt.text(0.01, 1.25, str(f'{model[0]}Train'), {'fontsize': 10}, fontproperties = 'monospace')
@@ -213,12 +213,12 @@ def train_models(X_train, X_test, y_train, y_test):
     train, store model results: images + scores, and store models
     
     Args:
-              X_train: X training data
-              X_test: X testing data
-              y_train: y training data
-              y_test: y testing data
+        X_train: X training data
+        X_test: X testing data
+        y_train: y training data
+        y_test: y testing data
     Returns:
-              None
+        None
     '''
     
     from sklearn.linear_model import LogisticRegression
@@ -228,8 +228,6 @@ def train_models(X_train, X_test, y_train, y_test):
     import matplotlib.pyplot as plt
     import shap
     import joblib
-    
-#     X_train, X_test, y_train, y_test = perform_feature_engineering(df, response)
     
     ## Train models
     # random forest with grid search
@@ -313,11 +311,9 @@ if __name__ == "__main__":
     df = import_data(DF_PATH)
     
     # perform eda
-    perform_eda(df)
+    perform_eda(df, PLOTS, PLOTS_PATH)
     
     # perform feature engineering
-    # response = 'Churn'
-    X_train, X_test, y_train, y_test = perform_feature_engineering(df, RESPONSE)
-    
+    X_train, X_test, y_train, y_test = perform_feature_engineering(df, CATEGORY_LIST, KEEP_COLS, RESPONSE)
     # train model
     train_models(X_train, X_test, y_train, y_test)

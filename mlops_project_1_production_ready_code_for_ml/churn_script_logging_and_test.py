@@ -2,15 +2,9 @@ import os
 import sys
 import logging
 import pandas as pd
-# import pytest
-# from churn_library import import_data, perform_eda
+import pandas.api.types as ptypes
 import churn_library as cl
-from constants import PLOTS, PLOTS_PATH, CATEGORY_LIST, RESPONSE
-
-# # Parent Folder 
-# sys.path.append(
-#     os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-# )
+from constants import PLOTS, PLOTS_PATH, CATEGORY_LIST, KEEP_COLS, RESPONSE
 
 
 logging.basicConfig(
@@ -54,7 +48,7 @@ def test_eda(request):
 			The file doesn't appear to have rows and columns")
 		raise err
 	try:
-		cl.perform_eda(df)
+		cl.perform_eda(df, PLOTS, PLOTS_PATH)
 		assert len([entry for entry in os.listdir(PLOTS_PATH) if os.path.isfile(os.path.join(PLOTS_PATH, entry))]) == len(PLOTS)
 		logging.info("Number of plot files is correct: SUCCESS")
 		for plot in PLOTS:
@@ -88,26 +82,40 @@ def test_encoder_helper(request):
 		new_df = cl.encoder_helper(alt_df, CATEGORY_LIST, RESPONSE)
 		assert len(new_df.columns) == len(df.columns) + len(CATEGORY_LIST)
 		assert new_df.shape[0] == df.shape[0]
+		assert all(ptypes.is_numeric_dtype(new_df[f'{col}_{RESPONSE}']) for col in CATEGORY_LIST)
 		logging.info("Categorical columns encoded by encoder_helper: SUCCESS")
 	except AssertionError as err:
 		logging.error("Testing encoding of categorical columns on test_encoder_helper function:\
-			Categorical columns haven't been encoded or new df has different number of records")
+			Categorical columns haven't been encoded correctly or encoded df has different number of records")
 		raise err
 
 
-
-
-
-
-
-# def test_perform_feature_engineering(perform_feature_engineering):
-# 	'''
-# 	test perform_feature_engineering
-# 	'''
-#     response = 'Churn'
-#     X_train, X_test, y_train, y_test = perform_feature_engineering(df, response)
-
-
+def test_perform_feature_engineering(request):
+	'''
+	test perform_feature_engineering
+	'''
+    
+	try:
+		df = pd.DataFrame(request.config.cache.get('data/df', None))
+		assert df.shape[0] > 0
+		assert df.shape[1] > 0
+		logging.info("Cached df loaded: SUCCESS")
+		X_train, X_test, y_train, y_test = cl.perform_feature_engineering(df, CATEGORY_LIST, KEEP_COLS, RESPONSE)
+		assert list(X_train.columns) == KEEP_COLS and list(X_test.columns) == KEEP_COLS
+		assert df.shape[0] > X_train.shape[0] > X_test.shape[0] > 0
+		assert df.shape[1] > X_train.shape[1] == X_test.shape[1] > 0
+		assert all(ptypes.is_numeric_dtype(X_train[item]) for item in KEEP_COLS)
+		assert all(ptypes.is_numeric_dtype(X_test[item]) for item in KEEP_COLS)
+		logging.info("X_train and X_test split done correctly: SUCCESS")
+		assert df.shape[0] > y_train.shape[0] > y_test.shape[0] > 0
+		assert len(y_train.shape) == len(y_test.shape) > 0
+		assert all(ptypes.is_numeric_dtype(item) for item in [y_train, y_test])
+		logging.info("y_train and y_test split done correctly: SUCCESS")
+	except AssertionError as err:
+		logging.error("Testing feature engineering function:\
+			df split into X_train, X_test, y_train, y_test is incorrect or types are not correct")
+		raise err
+		
 # def test_train_models(train_models):
 # 	'''
 # 	test train_models
@@ -117,6 +125,9 @@ def test_encoder_helper(request):
 
 if __name__ == "__main__":
 	test_import(path, request)
+	test_eda(request)
+	test_encoder_helper(request)
+	test_perform_feature_engineering(request)
 
 
 

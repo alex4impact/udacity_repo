@@ -23,14 +23,18 @@ CATEGORY_LIST = [
     'Card_Category'                
     ]
 
+RESPONSE = 'Churn'
+
 KEEP_COLS = ['Customer_Age', 'Dependent_count', 'Months_on_book',
         'Total_Relationship_Count', 'Months_Inactive_12_mon',
         'Contacts_Count_12_mon', 'Credit_Limit', 'Total_Revolving_Bal',
         'Avg_Open_To_Buy', 'Total_Amt_Chng_Q4_Q1', 'Total_Trans_Amt',
-        'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1', 'Avg_Utilization_Ratio']
+        'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1', 'Avg_Utilization_Ratio',
+        f'Gender_{RESPONSE}', f'Education_Level_{RESPONSE}',
+        f'Marital_Status_{RESPONSE}', f'Income_Category_{RESPONSE}',
+        f'Card_Category_{RESPONSE}']
 
-RESPONSE_COLS = ['Gender_', 'Education_Level_',
-        'Marital_Status_', 'Income_Category_',
-        'Card_Category_']
+# RESPONSE_COLS = ['Gender_', 'Education_Level_',
+#         'Marital_Status_', 'Income_Category_',
+#         'Card_Category_']
 
-RESPONSE = 'Churn'
