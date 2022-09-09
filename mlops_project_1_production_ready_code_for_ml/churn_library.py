@@ -112,8 +112,6 @@ def perform_feature_engineering(df, category_list, keep_cols, response):
     y = df[response]
     X = pd.DataFrame()
     
-    # keep_cols = keep_cols.append([col+response for col in response_cols])
-    
     X[keep_cols] = df[keep_cols]
     
     # return train test split 
@@ -156,7 +154,7 @@ def classification_report_image(y_train,
         plt.text(0.01, 0.05, str(classification_report(y_test, model[1])), {'fontsize': 10}, fontproperties = 'monospace') # approach improved by OP -> monospace!
         plt.text(0.01, 0.6, str(f'{model[0]}Test'), {'fontsize': 10}, fontproperties = 'monospace')
         plt.text(0.01, 0.7, str(classification_report(y_train, model[2])), {'fontsize': 10}, fontproperties = 'monospace') # approach improved by OP -> monospace!
-        plt.axis('off');
+        plt.axis('off')
         plt.savefig(model[3], bbox_inches = "tight")
         plt.close()
     
@@ -242,7 +240,7 @@ def train_models(X_train, X_test, y_train, y_test):
         'max_depth' : [4,5,100],
         'criterion' :['gini', 'entropy']
     }
-
+    
     ## train cv_rfc
     cv_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5)
     cv_rfc.fit(X_train, y_train)

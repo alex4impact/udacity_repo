@@ -106,21 +106,26 @@ def test_perform_feature_engineering(request):
 		assert df.shape[1] > X_train.shape[1] == X_test.shape[1] > 0
 		assert all(ptypes.is_numeric_dtype(X_train[item]) for item in KEEP_COLS)
 		assert all(ptypes.is_numeric_dtype(X_test[item]) for item in KEEP_COLS)
+		request.config.cache.set('data/X_train', X_train.to_dict())
+		request.config.cache.set('data/X_test', X_test.to_dict())
 		logging.info("X_train and X_test split done correctly: SUCCESS")
 		assert df.shape[0] > y_train.shape[0] > y_test.shape[0] > 0
 		assert len(y_train.shape) == len(y_test.shape) > 0
 		assert all(ptypes.is_numeric_dtype(item) for item in [y_train, y_test])
+		request.config.cache.set('data/y_train', y_train.to_dict())
+		request.config.cache.set('data/y_test', y_test.to_dict())
 		logging.info("y_train and y_test split done correctly: SUCCESS")
 	except AssertionError as err:
 		logging.error("Testing feature engineering function:\
 			df split into X_train, X_test, y_train, y_test is incorrect or types are not correct")
 		raise err
-		
-# def test_train_models(train_models):
-# 	'''
-# 	test train_models
-# 	'''
-# 	train_models(X_train, X_test, y_train, y_test)
+
+
+def test_train_models(request):
+	'''
+	test train_models
+	'''
+	train_models(X_train, X_test, y_train, y_test)
 
 
 if __name__ == "__main__":
