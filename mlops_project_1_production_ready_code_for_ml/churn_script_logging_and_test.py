@@ -1,10 +1,12 @@
 import os
 import sys
+import imghdr
 import logging
 import pandas as pd
 import pandas.api.types as ptypes
 import churn_library as cl
-from constants import PLOTS, PLOTS_PATH, CATEGORY_LIST, KEEP_COLS, RESPONSE
+from constants import PLOTS, PLOTS_PATH, CATEGORY_LIST, KEEP_COLS,\
+	RESPONSE, MODELS_PATH, MODELS, RESULTS_PATH, PARAM_GRID
 
 
 logging.basicConfig(
@@ -73,11 +75,6 @@ def test_encoder_helper(request):
 		assert df.shape[0] > 0
 		assert df.shape[1] > 0
 		logging.info("Cached df loaded: SUCCESS")
-	except AssertionError as err:
-		logging.error("Testing cached df loaded on test_encoder_helper function:\
-			The file doesn't appear to have rows and columns")
-		raise err
-	try:
 		alt_df = df.copy()
 		new_df = cl.encoder_helper(alt_df, CATEGORY_LIST, RESPONSE)
 		assert len(new_df.columns) == len(df.columns) + len(CATEGORY_LIST)
@@ -103,7 +100,7 @@ def test_perform_feature_engineering(request):
 		X_train, X_test, y_train, y_test = cl.perform_feature_engineering(df, CATEGORY_LIST, KEEP_COLS, RESPONSE)
 		assert list(X_train.columns) == KEEP_COLS and list(X_test.columns) == KEEP_COLS
 		assert df.shape[0] > X_train.shape[0] > X_test.shape[0] > 0
-		assert df.shape[1] > X_train.shape[1] == X_test.shape[1] > 0
+		assert df.shape[1] > X_train.shape[1] == X_test.shape[1] == len(KEEP_COLS) > 1
 		assert all(ptypes.is_numeric_dtype(X_train[item]) for item in KEEP_COLS)
 		assert all(ptypes.is_numeric_dtype(X_test[item]) for item in KEEP_COLS)
 		request.config.cache.set('data/X_train', X_train.to_dict())
@@ -125,14 +122,37 @@ def test_train_models(request):
 	'''
 	test train_models
 	'''
-	train_models(X_train, X_test, y_train, y_test)
 
+	try:
+		X_train = pd.DataFrame(request.config.cache.get('data/X_train', None))
+		X_test = pd.DataFrame(request.config.cache.get('data/X_test', None))
+		y_train = pd.Series(request.config.cache.get('data/y_train', None))
+		y_test = pd.Series(request.config.cache.get('data/y_test', None))
+		logging.info("Cached X_train, X_test, y_train, y_test loaded: SUCCESS")
+		cl.train_models(X_train, X_test, y_train, y_test, PARAM_GRID, MODELS, \
+			MODELS_PATH, RESULTS_PATH)
+		logging.info("Trained model run completed: SUCCESS")
+		assert len([entry for entry in os.listdir(MODELS_PATH) if os.path.isfile(os.path.join(MODELS_PATH, entry))]) == len(MODELS)
+		logging.info("Number of model files is correct: SUCCESS")
+		for model in MODELS:
+			assert os.path.isfile(os.path.join(MODELS_PATH, model))
+			logging.info(f"model file {model} exists: SUCCESS")
+		logging.info("Checking if there are 5 different png files in the results folder...")
+		assert len(set([entry for entry in os.listdir(RESULTS_PATH) if \
+			os.path.isfile(os.path.join(RESULTS_PATH, entry)) and \
+				imghdr.what(os.path.join(RESULTS_PATH, entry)) == 'png'])) == 5
+		logging.info("There are 5 different png files in the results folder: SUCCESS")	
+	except AssertionError as err:
+		logging.error("Testing models training function:\
+			Model training or output results are not correct")
+		raise err
 
 if __name__ == "__main__":
 	test_import(path, request)
 	test_eda(request)
 	test_encoder_helper(request)
 	test_perform_feature_engineering(request)
+	test_train_models(request)
 
 
 
