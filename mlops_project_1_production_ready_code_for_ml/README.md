@@ -11,6 +11,7 @@
 
 ## Files structure and data description
 The root directory is composed by 4 folders with model outputs and 4 main files in the root directory, as below.
+
  .
 `├── `**`data\`**\
 `│   └── bank_data.csv`\
