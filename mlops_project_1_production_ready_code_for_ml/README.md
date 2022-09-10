@@ -5,7 +5,7 @@
 ## Project Description
 - The purpose of this project is to use production grade skills in SWE to refactor and 'productionise' Machine Learning models previously written in Python on a Jupyter notebook into modular clean code ready for production.
 - The main skills used during the refactoring process were:
-  - The KISS methodology (Keep It Simple Stupid!) writing easy to read code, reducing repetitive code and increasing performance using vectorised implementations where applicable 
+  - The KISS principle (Keep It Simple Stupid!) writing easy to read code, reducing repetitive code and increasing performance using vectorised implementations where applicable 
   - Testing techniques with pytest in order to build production grade tested code
   - Linted code with pylint to ensure PEP 8 standard is enforced to maintain elegant and ease to read code.
 
