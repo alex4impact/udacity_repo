@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/mlruns/0/d2f786e8d610404587859acf74749aab/artifacts
+end_time: 1663585461889
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: d2f786e8d610404587859acf74749aab
+run_uuid: d2f786e8d610404587859acf74749aab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1663585459461
+status: 4
+tags: []
+user_id: alex

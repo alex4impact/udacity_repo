@@ -1,2 +1,6 @@
 .venv/
-lesson_4_production_ready_code/
+.DS_Store
+mlops_project_2_building_reproducible_workflow/wandb/
+mlops_project_2_building_reproducible_workflow/mlruns/
+mlops_project_2_exercises/
+WORK_SPACES_VS_CODE/

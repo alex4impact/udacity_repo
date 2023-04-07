@@ -1,0 +1,167 @@
+2022-09-19 21:29:55,578 INFO    StreamThr :36276 [internal.py:wandb_internal():90] W&B internal server running at pid: 36276, started at: 2022-09-19 21:29:55.576899
+2022-09-19 21:29:55,580 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: status
+2022-09-19 21:29:55,582 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: status
+2022-09-19 21:29:55,584 INFO    WriterThread:36276 [datastore.py:open_for_write():75] open: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/run-2xbmarlw.wandb
+2022-09-19 21:29:55,584 DEBUG   SenderThread:36276 [sender.py:send():302] send: header
+2022-09-19 21:29:55,589 DEBUG   SenderThread:36276 [sender.py:send():302] send: run
+2022-09-19 21:29:56,202 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: check_version
+2022-09-19 21:29:56,206 INFO    SenderThread:36276 [dir_watcher.py:__init__():216] watching files in: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files
+2022-09-19 21:29:56,206 INFO    SenderThread:36276 [sender.py:_start_run_threads():913] run started: 2xbmarlw with start time 1663586995.565742
+2022-09-19 21:29:56,207 DEBUG   SenderThread:36276 [sender.py:send():302] send: summary
+2022-09-19 21:29:56,207 INFO    SenderThread:36276 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-19 21:29:56,207 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: check_version
+2022-09-19 21:29:56,276 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: run_start
+2022-09-19 21:29:56,277 DEBUG   HandlerThread:36276 [meta.py:__init__():35] meta init
+2022-09-19 21:29:56,277 DEBUG   HandlerThread:36276 [meta.py:__init__():50] meta init done
+2022-09-19 21:29:56,277 DEBUG   HandlerThread:36276 [meta.py:probe():216] probe
+2022-09-19 21:29:56,283 DEBUG   HandlerThread:36276 [meta.py:_setup_git():206] setup git
+2022-09-19 21:29:56,317 DEBUG   HandlerThread:36276 [meta.py:_setup_git():213] setup git done
+2022-09-19 21:29:56,318 DEBUG   HandlerThread:36276 [meta.py:_save_pip():54] save pip
+2022-09-19 21:29:56,318 DEBUG   HandlerThread:36276 [meta.py:_save_pip():68] save pip done
+2022-09-19 21:29:56,319 DEBUG   HandlerThread:36276 [meta.py:_save_conda():75] save conda
+2022-09-19 21:29:57,100 DEBUG   HandlerThread:36276 [meta.py:_save_conda():85] save conda done
+2022-09-19 21:29:57,100 DEBUG   HandlerThread:36276 [meta.py:probe():254] probe done
+2022-09-19 21:29:57,106 DEBUG   SenderThread:36276 [sender.py:send():302] send: files
+2022-09-19 21:29:57,106 INFO    SenderThread:36276 [sender.py:_save_file():1156] saving file wandb-metadata.json with policy now
+2022-09-19 21:29:57,112 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: stop_status
+2022-09-19 21:29:57,112 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: stop_status
+2022-09-19 21:29:57,209 INFO    Thread-12 :36276 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/wandb-metadata.json
+2022-09-19 21:29:57,209 INFO    Thread-12 :36276 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/requirements.txt
+2022-09-19 21:29:57,210 INFO    Thread-12 :36276 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/wandb-summary.json
+2022-09-19 21:29:57,210 INFO    Thread-12 :36276 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/conda-environment.yaml
+2022-09-19 21:29:57,354 DEBUG   SenderThread:36276 [sender.py:send():302] send: telemetry
+2022-09-19 21:29:57,396 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: log_artifact
+2022-09-19 21:29:57,396 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: log_artifact
+2022-09-19 21:29:57,398 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:29:57,827 INFO    Thread-16 :36276 [upload_job.py:push():138] Uploaded file /var/folders/jp/d3mzwzn92d3_tl7t_4sbt5jr0000gn/T/tmprd69o9elwandb/3lbw2scu-wandb-metadata.json
+2022-09-19 21:29:58,209 INFO    SenderThread:36276 [sender.py:send_request_log_artifact():1207] logged artifact iris.csv - {'id': 'QXJ0aWZhY3Q6MTk2NDgxMjA1', 'digest': '4e856f9f3a3d03e1c145c8f8e2bec8aa', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'iris.csv', 'alias': 'latest'}, {'artifactCollectionName': 'iris.csv', 'alias': 'v0'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjI4NDk2Mzk4', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTk2NDgxMjA1', 'versionIndex': 0}}, 'version': 'v0'}
+2022-09-19 21:29:58,209 DEBUG   SenderThread:36276 [sender.py:send():302] send: telemetry
+2022-09-19 21:29:58,209 DEBUG   SenderThread:36276 [sender.py:send():302] send: exit
+2022-09-19 21:29:58,210 INFO    SenderThread:36276 [sender.py:send_exit():438] handling exit code: 0
+2022-09-19 21:29:58,210 INFO    SenderThread:36276 [sender.py:send_exit():440] handling runtime: 1
+2022-09-19 21:29:58,212 INFO    SenderThread:36276 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-19 21:29:58,212 INFO    SenderThread:36276 [sender.py:send_exit():446] send defer
+2022-09-19 21:29:58,213 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:29:58,213 INFO    Thread-12 :36276 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/wandb-summary.json
+2022-09-19 21:29:58,213 INFO    Thread-12 :36276 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/output.log
+2022-09-19 21:29:58,214 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:29:58,214 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 0
+2022-09-19 21:29:58,215 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:29:58,215 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 0
+2022-09-19 21:29:58,215 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 1
+2022-09-19 21:29:58,215 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:29:58,215 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 1
+2022-09-19 21:29:58,225 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:29:58,225 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 1
+2022-09-19 21:29:58,225 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 2
+2022-09-19 21:29:58,226 DEBUG   SenderThread:36276 [sender.py:send():302] send: stats
+2022-09-19 21:29:58,226 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:29:58,226 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 2
+2022-09-19 21:29:58,226 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:29:58,226 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 2
+2022-09-19 21:29:58,226 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 3
+2022-09-19 21:29:58,226 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:29:58,227 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 3
+2022-09-19 21:29:58,227 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:29:58,227 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 3
+2022-09-19 21:29:58,227 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 4
+2022-09-19 21:29:58,227 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:29:58,227 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 4
+2022-09-19 21:29:58,227 DEBUG   SenderThread:36276 [sender.py:send():302] send: summary
+2022-09-19 21:29:58,228 INFO    SenderThread:36276 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-19 21:29:58,228 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:29:58,228 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 4
+2022-09-19 21:29:58,228 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 5
+2022-09-19 21:29:58,228 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:29:58,228 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 5
+2022-09-19 21:29:58,229 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:29:58,229 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 5
+2022-09-19 21:29:58,320 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:29:58,475 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 6
+2022-09-19 21:29:58,475 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:29:58,476 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:29:58,476 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 6
+2022-09-19 21:29:58,476 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:29:58,476 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 6
+2022-09-19 21:29:58,578 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:29:59,219 INFO    Thread-12 :36276 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/wandb-summary.json
+2022-09-19 21:29:59,219 INFO    Thread-12 :36276 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/config.yaml
+2022-09-19 21:29:59,357 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 7
+2022-09-19 21:29:59,357 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:29:59,358 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:29:59,358 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 7
+2022-09-19 21:29:59,359 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:29:59,359 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 7
+2022-09-19 21:29:59,359 INFO    SenderThread:36276 [dir_watcher.py:finish():362] shutting down directory watcher
+2022-09-19 21:29:59,462 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:00,222 INFO    SenderThread:36276 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/output.log
+2022-09-19 21:30:00,223 INFO    SenderThread:36276 [dir_watcher.py:finish():392] scan: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files
+2022-09-19 21:30:00,223 INFO    SenderThread:36276 [dir_watcher.py:finish():406] scan save: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/requirements.txt requirements.txt
+2022-09-19 21:30:00,224 INFO    SenderThread:36276 [dir_watcher.py:finish():406] scan save: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/output.log output.log
+2022-09-19 21:30:00,224 INFO    SenderThread:36276 [dir_watcher.py:finish():406] scan save: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/config.yaml config.yaml
+2022-09-19 21:30:00,229 INFO    SenderThread:36276 [dir_watcher.py:finish():406] scan save: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/wandb-summary.json wandb-summary.json
+2022-09-19 21:30:00,232 INFO    SenderThread:36276 [dir_watcher.py:finish():406] scan save: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/conda-environment.yaml conda-environment.yaml
+2022-09-19 21:30:00,236 INFO    SenderThread:36276 [dir_watcher.py:finish():406] scan save: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/wandb-metadata.json wandb-metadata.json
+2022-09-19 21:30:00,236 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 8
+2022-09-19 21:30:00,236 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:00,237 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:30:00,237 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 8
+2022-09-19 21:30:00,238 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:30:00,240 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 8
+2022-09-19 21:30:00,241 INFO    SenderThread:36276 [file_pusher.py:finish():171] shutting down file pusher
+2022-09-19 21:30:00,345 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:00,345 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:00,451 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:00,451 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:00,557 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:00,557 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:00,660 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:00,660 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:00,768 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:00,768 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:00,872 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:00,873 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:00,927 INFO    Thread-20 :36276 [upload_job.py:push():138] Uploaded file /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/wandb-summary.json
+2022-09-19 21:30:00,961 INFO    Thread-19 :36276 [upload_job.py:push():138] Uploaded file /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/config.yaml
+2022-09-19 21:30:00,963 INFO    Thread-17 :36276 [upload_job.py:push():138] Uploaded file /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/requirements.txt
+2022-09-19 21:30:00,976 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:00,977 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:01,001 INFO    Thread-21 :36276 [upload_job.py:push():138] Uploaded file /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/conda-environment.yaml
+2022-09-19 21:30:01,080 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:01,081 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:01,139 INFO    Thread-18 :36276 [upload_job.py:push():138] Uploaded file /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/files/output.log
+2022-09-19 21:30:01,187 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:01,188 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:01,290 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:01,290 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:01,340 INFO    Thread-11 (_thread_body):36276 [sender.py:transition_state():459] send defer: 9
+2022-09-19 21:30:01,340 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:30:01,341 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 9
+2022-09-19 21:30:01,341 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:30:01,341 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 9
+2022-09-19 21:30:01,394 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:01,584 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 10
+2022-09-19 21:30:01,584 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:01,585 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:30:01,585 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 10
+2022-09-19 21:30:01,585 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:30:01,586 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 10
+2022-09-19 21:30:01,586 INFO    SenderThread:36276 [sender.py:transition_state():459] send defer: 11
+2022-09-19 21:30:01,587 DEBUG   SenderThread:36276 [sender.py:send():302] send: final
+2022-09-19 21:30:01,587 DEBUG   SenderThread:36276 [sender.py:send():302] send: footer
+2022-09-19 21:30:01,587 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: defer
+2022-09-19 21:30:01,587 INFO    HandlerThread:36276 [handler.py:handle_request_defer():164] handle defer: 11
+2022-09-19 21:30:01,587 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: defer
+2022-09-19 21:30:01,587 INFO    SenderThread:36276 [sender.py:send_request_defer():455] handle sender defer: 11
+2022-09-19 21:30:01,692 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-19 21:30:01,692 DEBUG   SenderThread:36276 [sender.py:send_request():316] send_request: poll_exit
+2022-09-19 21:30:01,693 INFO    SenderThread:36276 [file_pusher.py:join():176] waiting for file pusher
+2022-09-19 21:30:02,338 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: sampled_history
+2022-09-19 21:30:02,339 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: get_summary
+2022-09-19 21:30:02,339 DEBUG   HandlerThread:36276 [handler.py:handle_request():141] handle_request: shutdown
+2022-09-19 21:30:02,339 INFO    HandlerThread:36276 [handler.py:finish():810] shutting down handler
+2022-09-19 21:30:02,589 INFO    WriterThread:36276 [datastore.py:close():279] close: /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/wandb/run-20220919_212955-2xbmarlw/run-2xbmarlw.wandb
+2022-09-19 21:30:03,239 INFO    SenderThread:36276 [sender.py:finish():1312] shutting down sender
+2022-09-19 21:30:03,239 INFO    SenderThread:36276 [file_pusher.py:finish():171] shutting down file pusher
+2022-09-19 21:30:03,239 INFO    SenderThread:36276 [file_pusher.py:join():176] waiting for file pusher
+2022-09-19 21:30:04,344 INFO    MainThread:36276 [internal.py:handle_exit():80] Internal process exited

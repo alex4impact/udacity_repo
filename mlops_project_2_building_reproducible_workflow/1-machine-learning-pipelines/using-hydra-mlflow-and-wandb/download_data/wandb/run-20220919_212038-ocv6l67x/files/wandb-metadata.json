@@ -1,0 +1,31 @@
+{
+    "os": "macOS-12.5.1-x86_64-i386-64bit",
+    "python": "3.10.6",
+    "heartbeatAt": "2022-09-19T11:20:38.986355",
+    "startedAt": "2022-09-19T11:20:38.131649",
+    "docker": null,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [
+        "--file_url",
+        "https://raw.githubusercontent.com/scikit-learn/scikit-learn/4dfdfb4e1bb3719628753a4ece995a1b2fa5312a/sklearn/datasets/data/iris.csv",
+        "--artifact_name",
+        "iris.csv",
+        "--artifact_type",
+        "raw_data",
+        "--artifact_description",
+        "Input data"
+    ],
+    "state": "running",
+    "program": "/Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/download_data.py",
+    "codePath": "mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/download_data/download_data.py",
+    "git": {
+        "remote": "git@github.com:alex4impact/udacity_repo.git",
+        "commit": "bd200e313958f353465a0b100efa4c5b8f840809"
+    },
+    "email": "acarvalho1@woolworths.com.au",
+    "root": "/Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo",
+    "host": "Ales-MacBook-Pro.local",
+    "username": "alex",
+    "executable": "/opt/anaconda3/envs/mlflow-0bf5b6b0c960eae0217520ce3f62548085d853c3/bin/python"
+}

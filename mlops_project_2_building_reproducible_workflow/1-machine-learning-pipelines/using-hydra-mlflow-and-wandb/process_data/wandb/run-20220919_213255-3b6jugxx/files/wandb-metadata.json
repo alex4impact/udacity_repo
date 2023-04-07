@@ -1,0 +1,31 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.8.13",
+    "heartbeatAt": "2022-09-19T11:32:56.503214",
+    "startedAt": "2022-09-19T11:32:55.138899",
+    "docker": null,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [
+        "--input_artifact",
+        "iris.csv:latest",
+        "--artifact_name",
+        "cleaned_data",
+        "--artifact_type",
+        "cleaned_data",
+        "--artifact_description",
+        "Data cleaned"
+    ],
+    "state": "running",
+    "program": "run.py",
+    "codePath": "mlops_project_2_exercises/lesson-1-machine-learning-pipelines/exercises/exercise_3/starter/process_data/run.py",
+    "git": {
+        "remote": "git@github.com:alex4impact/udacity_repo.git",
+        "commit": "bd200e313958f353465a0b100efa4c5b8f840809"
+    },
+    "email": "acarvalho1@woolworths.com.au",
+    "root": "/Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo",
+    "host": "Ales-MacBook-Pro.local",
+    "username": "alex",
+    "executable": "/opt/anaconda3/envs/mlflow-e9546b2956f739017c73c084a9cb06675d4c2364/bin/python"
+}
