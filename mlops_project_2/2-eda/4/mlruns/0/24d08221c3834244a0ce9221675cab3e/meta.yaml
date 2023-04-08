@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_building_reproducible_workflow/2-eda-and-data-preparation/4-keep-track-of-jupyter-notebook-with-wandb/mlruns/0/24d08221c3834244a0ce9221675cab3e/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 24d08221c3834244a0ce9221675cab3e
+run_name: nervous-stork-512
+run_uuid: 24d08221c3834244a0ce9221675cab3e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1680946390932
+status: 1
+tags: []
+user_id: alex

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_building_reproducible_workflow/2-eda-and-data-preparation/4-keep-track-of-jupyter-notebook-with-wandb/mlruns/0/9553677944b743a0a2af999e1858aa70/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9553677944b743a0a2af999e1858aa70
+run_name: treasured-finch-250
+run_uuid: 9553677944b743a0a2af999e1858aa70
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1680946628818
+status: 1
+tags: []
+user_id: alex

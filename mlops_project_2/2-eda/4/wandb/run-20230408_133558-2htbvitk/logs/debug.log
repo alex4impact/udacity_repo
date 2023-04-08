@@ -1,0 +1,27 @@
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_setup.py:_flush():68] Configure stats pid to 10365
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_setup.py:_flush():68] Loading settings from /Users/alex/.config/wandb/settings
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_setup.py:_flush():68] Loading settings from /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_building_reproducible_workflow/2-eda-and-data-preparation/4-keep-track-of-jupyter-notebook-with-wandb/wandb/settings
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True', 'entity': 'alex4impact', 'project': 'exercise_4'}
+2023-04-08 13:35:58,575 WARNING MainThread:10365 [wandb_setup.py:_flush():68] Could not save program above cwd: /opt/anaconda3/envs/udacity/bin/wandb
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program_relpath': None, 'program': '/opt/anaconda3/envs/udacity/bin/wandb'}
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_init.py:_log_setup():476] Logging user logs to /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_building_reproducible_workflow/2-eda-and-data-preparation/4-keep-track-of-jupyter-notebook-with-wandb/wandb/run-20230408_133558-2htbvitk/logs/debug.log
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_init.py:_log_setup():477] Logging internal logs to /Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_building_reproducible_workflow/2-eda-and-data-preparation/4-keep-track-of-jupyter-notebook-with-wandb/wandb/run-20230408_133558-2htbvitk/logs/debug-internal.log
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_init.py:init():516] calling init triggers
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_init.py:init():519] wandb.init called with sweep_config: {}
+config: {'path': 'genres_mod.parquet'}
+2023-04-08 13:35:58,575 INFO    MainThread:10365 [wandb_init.py:init():569] starting backend
+2023-04-08 13:35:58,576 INFO    MainThread:10365 [wandb_init.py:init():573] setting up manager
+2023-04-08 13:35:58,581 INFO    MainThread:10365 [backend.py:_multiprocessing_setup():102] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2023-04-08 13:35:58,588 INFO    MainThread:10365 [wandb_init.py:init():580] backend started and connected
+2023-04-08 13:35:58,593 INFO    MainThread:10365 [wandb_init.py:init():658] updated telemetry
+2023-04-08 13:35:58,617 INFO    MainThread:10365 [wandb_init.py:init():693] communicating run to backend with 60 second timeout
+2023-04-08 13:35:59,291 INFO    MainThread:10365 [wandb_run.py:_on_init():2006] communicating current version
+2023-04-08 13:35:59,355 INFO    MainThread:10365 [wandb_run.py:_on_init():2010] got version response upgrade_message: "wandb version 0.14.2 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-04-08 13:35:59,355 INFO    MainThread:10365 [wandb_init.py:init():728] starting run threads in backend
+2023-04-08 13:36:01,775 INFO    MainThread:10365 [wandb_run.py:_console_start():1986] atexit reg
+2023-04-08 13:36:01,775 INFO    MainThread:10365 [wandb_run.py:_redirect():1844] redirect: SettingsConsole.WRAP_RAW
+2023-04-08 13:36:01,776 INFO    MainThread:10365 [wandb_run.py:_redirect():1909] Wrapping output streams.
+2023-04-08 13:36:01,776 INFO    MainThread:10365 [wandb_run.py:_redirect():1931] Redirects installed.
+2023-04-08 13:36:01,776 INFO    MainThread:10365 [wandb_init.py:init():765] run started, returning control to user process
+2023-04-08 13:36:13,878 WARNING MsgRouterThr:10365 [router.py:message_loop():77] message_loop has been closed

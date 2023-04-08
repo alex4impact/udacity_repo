@@ -1,0 +1,16 @@
+artifact_uri: file:///Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo/mlops_project_2_building_reproducible_workflow/2-eda-and-data-preparation/4-keep-track-of-jupyter-notebook-with-wandb/mlruns/0/1004eb5698da4b179c21ed5f00bfc58c/artifacts
+deleted_time: null
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 1004eb5698da4b179c21ed5f00bfc58c
+run_uuid: 1004eb5698da4b179c21ed5f00bfc58c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1680929627909
+status: 1
+tags: []
+user_id: alex

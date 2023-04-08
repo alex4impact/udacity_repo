@@ -1,0 +1,51 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.8.16",
+    "heartbeatAt": "2023-04-08T03:35:59.367775",
+    "startedAt": "2023-04-08T03:35:58.572045",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "artifact",
+        "put",
+        "--name",
+        "exercise_4/genres_mod.parquet",
+        "--type",
+        "raw_data",
+        "--description",
+        "A modified version of the songs dataset",
+        "genres_mod.parquet"
+    ],
+    "state": "running",
+    "program": "/opt/anaconda3/envs/udacity/bin/wandb",
+    "git": {
+        "remote": "git@github.com-alex4impact:alex4impact/udacity_repo.git",
+        "commit": "df8d6d642462fa569da88288f1e493c11a4ef41c"
+    },
+    "email": "af.carvalho@live.com",
+    "root": "/Users/alex/ml_systems_course/mlops_udacity/github_repo/udacity_repo",
+    "host": "Ales-MacBook-Pro.local",
+    "username": "alex",
+    "executable": "/opt/anaconda3/envs/udacity/bin/python3.8",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2900,
+        "min": 2900,
+        "max": 2900
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2900,
+            "min": 2900,
+            "max": 2900
+        }
+    ],
+    "disk": {
+        "total": 465.62699127197266,
+        "used": 299.3923759460449
+    },
+    "memory": {
+        "total": 32.0
+    }
+}
