@@ -1,7 +1,8 @@
 .venv/
 .DS_Store
-mlops_project_2/2-eda/4/wandb/
-mlops_project_2/2-eda/4/mlruns/
-mlops_project_2/2-eda/4/.ipynb_checkpoints/
 mlops_project_2_exercises/
 WORK_SPACES_VS_CODE/
+.vscode/
+**/wandb/
+**/mlruns/
+**/.ipynb_checkpoints/
