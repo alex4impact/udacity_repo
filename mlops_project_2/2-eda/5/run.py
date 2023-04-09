@@ -32,14 +32,14 @@ def go(args):
 
     logger.info("Creating artifact")
 
-    df.to_csv("preprocessed_data.csv")
+    df.to_csv(args.artifact_name)
 
     artifact = wandb.Artifact(
         name=args.artifact_name,
         type=args.artifact_type,
         description=args.artifact_description,
     )
-    artifact.add_file("preprocessed_data.csv")
+    artifact.add_file(args.artifact_name)
 
     logger.info("Logging artifact")
     run.log_artifact(artifact)
