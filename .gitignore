@@ -1,7 +1,6 @@
 .venv/
 .DS_Store
 mlops_project_2_exercises/
-WORK_SPACES_VS_CODE/
 .vscode/
 **/wandb/
 **/mlruns/

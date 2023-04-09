@@ -14,14 +14,14 @@ def go(args):
     run = wandb.init(project="exercise_5", job_type="process_data")
 
     logger.info("Downloading artifact")
-    # artifact = run.use_artifact("alex4impact/exercise_4/genres_mod.parquet:latest")
     artifact = run.use_artifact(args.input_artifact) 
     artifact_path = artifact.file()
 
+    logger.info("Downloading artifact")
     df = pd.read_parquet(artifact_path)
+
     # Drop duplicates and reset index
-    df.drop_duplicates(inplace=True)
-    df.reset_index(drop=True, inplace=True)
+    df.drop_duplicates(inplace=True).reset_index(drop=True, inplace=True)
 
     # Fill NaN values with empty strings
     df['title'].fillna(value='', inplace=True)
