@@ -5,3 +5,4 @@ mlops_project_2_exercises/
 **/wandb/
 **/mlruns/
 **/.ipynb_checkpoints/
+**/__pycache__/
