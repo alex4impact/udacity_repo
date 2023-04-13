@@ -44,4 +44,4 @@ def ks_alpha(request):
     if ks_alpha is None:
         pytest.fail("--ks_alpha missing on command line")
 
-    return ks_alpha
+    return float(ks_alpha)
