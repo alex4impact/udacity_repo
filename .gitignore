@@ -6,3 +6,4 @@ mlops_project_2_exercises/
 **/mlruns/
 **/.ipynb_checkpoints/
 **/__pycache__/
+**/multirun/
